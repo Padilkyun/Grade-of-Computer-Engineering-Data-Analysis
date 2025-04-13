@@ -113,11 +113,11 @@ for semester in filtered_data['Semester'].unique():
 
 
 col1, col2 = st.columns([1, 1])
-    col1.write("Informasi Semester :")
-    with col1:
-        st.metric(f"Final IPK: {last_ipk:.2f}")
-    with col2:
-        st.metric("Jumlah SKS Total yang diambil : ", total_sks)
+col1.write("Informasi Semester :")
+with col1:
+    st.metric(f"Final IPK: {last_ipk:.2f}")
+with col2:
+    st.metric("Jumlah SKS Total yang diambil : ", total_sks)
 
 st.subheader("Sebaran IPK")
 
