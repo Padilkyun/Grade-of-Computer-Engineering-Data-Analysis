@@ -137,3 +137,6 @@ ax.set_title('Sebaran IPK', fontsize=14)
 ax.set_xlabel('IPK Akhir')
 ax.set_ylabel('NIM')
 st.pyplot(fig)
+
+st.caption("---")
+st.caption("Fadhillah Rahmad Kurnia || 	MC184D5Y0386 || DBS Cooding Camp @ 2024 All Rights Reserved")
