@@ -11,7 +11,7 @@ nim_list = data[~(data['NIM'] == 2211511001)]['NIM'].unique()
 semester_list = sorted(data['Semester'].unique(), key=lambda x: (int(x.split()[1]), x.split()[0]))  
 
 st.title("Dashboard Nilai Tekom22")
-st.write("Karena Gabut saya membuat API untuk portal 2 unand berikut adalah data KHS dari mahasiswa Teknik Komputer Universitas Andalas dari 2022 hingga 2024 anda bisa melihat data KHS mahasiswa dengan memilih NIM di sidebar dan melihat data KHS mahasiswa tersebut di paling bawah ada sebaran IPK untuk semua mahasiswa Exynos22. || Tidak intensi jahat hanya ingin menyelesaikan kelas dicoding")
+st.write("Untuk memenuhi Submission saya membuat API untuk portal 2 unand berikut adalah data KHS dari mahasiswa Teknik Komputer Universitas Andalas dari 2022 hingga 2024 anda bisa melihat data KHS mahasiswa dengan memilih NIM di sidebar dan melihat data KHS mahasiswa tersebut di paling bawah ada sebaran IPK untuk semua mahasiswa Exynos22. || Tidak intensi jahat hanya ingin menyelesaikan kelas dicoding")
 col1, col2 = st.columns([1, 1])
 col1.write("Data yang diolah terdiri dari:")
 
@@ -104,20 +104,22 @@ st.pyplot(fig)
 
 
 last_ipk = semester_gpa['Cumulative IPK'].values[-1]
-st.write(f"Final IPK: {last_ipk:.2f}")
-
 
 total_sks = filtered_data.drop_duplicates(subset='Nama Mata Kuliah')['Jumlah SKS'].sum()
-
-
 for semester in filtered_data['Semester'].unique():
     if '2022' in semester and ('Ganjil' in semester or 'Genap' in semester):
         total_sks += 4
 
-st.write("Jumlah SKS Total yang diambil : ", total_sks)
 
 
-st.subheader("Sebaran IPK Akhir Berdasarkan NIM (Tertinggi ke Terendah)")
+col1, col2 = st.columns([1, 1])
+    col1.write("Informasi Semester :")
+    with col1:
+        st.metric(f"Final IPK: {last_ipk:.2f}")
+    with col2:
+        st.metric("Jumlah SKS Total yang diambil : ", total_sks)
+
+st.subheader("Sebaran IPK")
 
 
 ip_final = data[['NIM', 'Semester', 'IP']].drop_duplicates(subset=['NIM', 'Semester'])
