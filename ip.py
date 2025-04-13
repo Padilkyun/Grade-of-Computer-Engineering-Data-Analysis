@@ -104,18 +104,18 @@ st.pyplot(fig)
 
 
 last_ipk = semester_gpa['Cumulative IPK'].values[-1]
+st.write(f"Final IPK: {last_ipk:.2f}")
+
 
 total_sks = filtered_data.drop_duplicates(subset='Nama Mata Kuliah')['Jumlah SKS'].sum()
+
+
 for semester in filtered_data['Semester'].unique():
     if '2022' in semester and ('Ganjil' in semester or 'Genap' in semester):
         total_sks += 4
-    st.write("Jumlah SKS Total yang diambil : ", total_sks)
-col1 = st.columns([1])
-col1.write("Informasi Semester :")
-with col1:
-    st.metric(f"Final IPK: {last_ipk:.2f}")
-with col2:
-    
+
+st.write("Jumlah SKS Total yang diambil : ", total_sks)
+
 
 st.subheader("Sebaran IPK")
 
