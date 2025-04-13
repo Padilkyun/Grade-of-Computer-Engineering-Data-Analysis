@@ -11,7 +11,7 @@ nim_list = data[~(data['NIM'] == 2211511001)]['NIM'].unique()
 semester_list = sorted(data['Semester'].unique(), key=lambda x: (int(x.split()[1]), x.split()[0]))  
 
 st.title("Dashboard Nilai Tekom22")
-st.write("Untuk memenuhi Submission saya membuat API untuk portal nilai berikut adalah data KHS dari mahasiswa dari 2022 hingga 2024 anda bisa melihat data KHS mahasiswa dengan memilih NIM di sidebar dan melihat data KHS mahasiswa tersebut di paling bawah ada sebaran IPK untuk semua mahasiswa Exynos22. || Tidak intensi jahat hanya ingin menyelesaikan kelas dicoding")
+st.write("Untuk memenuhi Submission saya membuat API untuk portal nilai berikut adalah data KHS dari mahasiswa dari 2022 hingga 2024 anda bisa melihat data KHS mahasiswa dengan memilih NIM di sidebar dan melihat data KHS mahasiswa tersebut di paling bawah ada sebaran IPK untuk semua mahasiswa. || Tidak intensi jahat hanya ingin menyelesaikan kelas dicoding")
 col1, col2 = st.columns([1, 1])
 col1.write("Data yang diolah terdiri dari:")
 
