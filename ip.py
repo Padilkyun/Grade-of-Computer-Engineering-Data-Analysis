@@ -104,9 +104,6 @@ st.pyplot(fig)
 
 
 last_ipk = semester_gpa['Cumulative IPK'].values[-1]
-st.write(f"Final IPK: {last_ipk:.2f}")
-
-
 total_sks = filtered_data.drop_duplicates(subset='Nama Mata Kuliah')['Jumlah SKS'].sum()
 
 
@@ -114,23 +111,29 @@ for semester in filtered_data['Semester'].unique():
     if '2022' in semester and ('Ganjil' in semester or 'Genap' in semester):
         total_sks += 4
 
-st.write("Jumlah SKS Total yang diambil : ", total_sks)
+col1, col2 = st.columns([1, 1])
+col1.write("Informasi Akhir :")
+with col1:
+    st.write(f"IPK semester Ganjil2022 : {semester_gpa['Cumulative IPK'].values[0]:.3f}")
+    st.write(f"IPK semester Genap2022 : {semester_gpa['Cumulative IPK'].values[1]:.3f}")
+    st.write(f"IPK semester Ganjil2023 : {semester_gpa['Cumulative IPK'].values[2]:.3f}")
+    st.write(f"IPK semester Genap2023 : {semester_gpa['Cumulative IPK'].values[3]:.3f}")
+    st.write(f"IPK semester Ganjil2024 : {semester_gpa['Cumulative IPK'].values[4]:.3f}")
+    st.metric("Final IPK : ", f"{last_ipk:.3f}")
+with col2:
+    st.metric("Jumlah SKS Total yang diambil : ", total_sks)
+
+
+
+
 
 
 st.subheader("Sebaran IPK")
-
-
 ip_final = data[['NIM', 'Semester', 'IP']].drop_duplicates(subset=['NIM', 'Semester'])
-
-
 ipk_akhir = ip_final.groupby('NIM')['IP'].mean().reset_index()
 ipk_akhir.rename(columns={'IP': 'IPK Akhir'}, inplace=True)
-
-
 ipk_akhir['NIM'] = ipk_akhir['NIM'].astype(str)
 ipk_akhir = ipk_akhir.sort_values(by='NIM', ascending=False)
-
-
 fig, ax = plt.subplots(figsize=(10, len(ipk_akhir)*0.35))
 sns.barplot(y='NIM', x='IPK Akhir', data=ipk_akhir, palette='Blues_d')
 ax.set_title('Sebaran IPK', fontsize=14)
