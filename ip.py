@@ -5,7 +5,7 @@ import seaborn as sns
 
 sns.set(style='dark')
 
-data = pd.read_csv('data_khs_mahasiswa.csv')
+data = pd.read_csv('combined_data.csv')
 
 nim_list = data[~(data['NIM'] == 2211511001)]['NIM'].unique()
 semester_list = sorted(data['Semester'].unique(), key=lambda x: (int(x.split()[1]), x.split()[0]))  
